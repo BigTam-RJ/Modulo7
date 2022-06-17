@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: rgb(10, 10, 94);
+            color: white;
+            font: 12pt Tahoma;
+            margin: 40px;
+        }
+        .mousepointer{
+            cursor: pointer;
+        }
+        .adicionar{
+           font-size: 25px;
+           cursor: pointer;
+        }
+        section{
+            padding: 10px;
+            border: 1px solid gray;
+            width: 300px;
+        }
+        div{
+/*             display: flex;
+            justify-content: space-between; */
+            width: auto
+        }
+        /* .remover{
+            position: absolute;
+            /* margin-left: 100px; */
+
+        #listaTarefas{
+            /* background-color: red; */
+            width: auto;
+            max-width: 300px;
+        }
+        .tarefas{
+            display: flex;
+            justify-content: space-between;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h2><i>Document Object Model</i> (DOM)</h2>
+    <p>Definie:</p>
+    <ul>
+        <li>Os <b>elementos</b> HTML como <b>objetos</b></li><p></p>
+        <li>Os <b>propriedades</b> dos elementos HTML</li><p></p>
+        <li>Os <b>métodos</b> para acessar os elementos HTML</li><p></p>
+        <li>Os <b>eventos</b> dos elementos HTML</li><p></p>
+    </ul>
+    <button>Limpar</button><p></p>
+    <h2>Lista de Tarefas</h2>
+    <section>
+        <div>
+            <input type="text" name="" id="caixaDeTexto" placeholder="tarefas">
+            <span id="botaoAdicionar" class="adicionar">☑</span>
+            <!-- <button id="botaoAdicionar" class="adicionar">☑</button> -->
+            
+        </div>
+        <ul id="listaTarefas"></ul>
+    </section>
+
+    <script src="dom.js"></script>
+</body>
+</html>

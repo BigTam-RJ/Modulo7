@@ -31,14 +31,19 @@ lista.removeAttribute('class');
 /* adicionar uma classe ao elemento UL */
 lista.className = 'mousepointer';
 
+/* console.log(lista.children[0].tagName); */
 /* alterar o estilo (css) via JS */
 lista.style.color = 'yellow';
 
 /* apagar TODOS os elementos da lista UL */
 const botaoLimpar = document.querySelector('button');
 botaoLimpar.addEventListener('click', function () {
-    for (const iterator of filhosUL) {
-        lista.removeChild(iterator);
+    if (lista.children[0].tagName === 'LI') {
+        for (const iterator of filhosUL) {
+            lista.removeChild(iterator);
+        }
+    } else {
+        console.log('lista vazia');
     }
 });
 
@@ -126,18 +131,6 @@ function exibeOcultaLista() {
         listaSuspensa.removeAttribute('hidden');
     }
 }
-
-/* cria a escuta para manipular a lista suspensa de opções */
-/* listaSuspensa.addEventListener('change', function () {
-    if (listaSuspensa.selectedIndex === 1 ||
-        listaSuspensa.selectedIndex === 2) {
-        const vetorTarefas = listaTarefas.querySelectorAll('.tarefas');
-        console.log(vetorTarefas);
-        for (const iterator of vetorTarefas) {
-            iterator.dispatchEvent(new Event('click'));
-        }
-    }
-}); */
 
 /* cria a escuta para manipular a lista suspensa de opções */
 listaSuspensa.addEventListener('change', function () {

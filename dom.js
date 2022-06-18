@@ -36,7 +36,7 @@ lista.style.color = 'yellow';
 
 /* apagar TODOS os elementos da lista UL */
 const botaoLimpar = document.querySelector('button');
-botaoLimpar.addEventListener('click', function(){
+botaoLimpar.addEventListener('click', function () {
     for (const iterator of filhosUL) {
         lista.removeChild(iterator);
     }
@@ -52,7 +52,7 @@ const listaTarefas = document.querySelector('#listaTarefas');
 let count = 0;
 
 /* criar a escuta do evento no botão */
-botaoAdicionar.addEventListener('click',function(){
+botaoAdicionar.addEventListener('click', function () {
     if (caixaTexto.value != '') {
         const textoDaTarefa = caixaTexto.value;
         /* console.log(textoDaTarefa); */
@@ -64,32 +64,46 @@ botaoAdicionar.addEventListener('click',function(){
 });
 
 /* função para adicionar a tarefa a lista */
-function adicionaTarefa(tarefa, contador){
+function adicionaTarefa(tarefa, contador) {
     /* criar os elementos que serão adicionados */
     const elementoLI = document.createElement('li');
     const elementoP = document.createElement('p');
     const botaoRemover = document.createElement('span');
+    
+    /* adiciona uma classe a LI */
+    elementoLI.className = 'naoRealizada';
 
-    /* cria um ID, insere o texto e adiciona o Parágrafo na LI */
-    elementoP.setAttribute('id',`tarefa${contador}`);
+    /* cria ID, classes, insere o texto no parágrafo */
+    elementoP.setAttribute('id', `tarefa${contador}`);
     elementoP.className = 'tarefas';
     elementoP.textContent = `${tarefa} `;
-    botaoRemover.textContent = '☒';
 
     /* adiciona uma classe ao botão */
-    botaoRemover.className = 'remover';
-    botaoRemover.className = 'remover mousepointer';
+    botaoRemover.className = 'mousepointer';
+    botaoRemover.textContent = '✘';
+    botaoRemover.style.fontWeight = '700';
 
+    /* Adiciona o botão remover ao parágrafo */
     elementoP.appendChild(botaoRemover);
+
+    /* Adiciona o parágrafo a LI */
     elementoLI.appendChild(elementoP);
 
+    /* Por fim adiciona a LI a UL */
     listaTarefas.appendChild(elementoLI);
-}
 
-/* criar o botão para remover os itens */
-function adicionaBotaoRemover(){
-    const botaoRemover = document.createElement('span');
-    botaoRemover.textContent = '☒';
+    /* cria a escuta do botão para remover as LIs deletadas */
+    botaoRemover.addEventListener(`click`, function () {
+        listaTarefas.removeChild(this.parentNode.parentNode);
+    });
 
-    return botaoRemover;
+    /* cria a escuta para marcar e desmarcar as tarefas concluídas */
+    elementoP.addEventListener('click', function () {
+        console.log(this.parentNode);
+        if (this.parentNode.className === 'naoRealizada') {
+            this.parentNode.className = 'realizada';
+        } else {
+            this.parentNode.className = 'naoRealizada';
+        }
+    });
 }

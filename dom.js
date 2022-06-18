@@ -48,6 +48,7 @@ botaoLimpar.addEventListener('click', function () {
 const caixaTexto = document.querySelector('#caixaDeTexto');
 const botaoAdicionar = document.querySelector('#botaoAdicionar');
 const listaTarefas = document.querySelector('#listaTarefas');
+const listaSuspensa = document.querySelector('#listaSuspensa');
 
 let count = 0;
 
@@ -60,6 +61,8 @@ botaoAdicionar.addEventListener('click', function () {
         caixaTexto.focus();
         count++;
         adicionaTarefa(textoDaTarefa, count);
+    } else {
+        console.log("Insira uma nova tarefa!");
     }
 });
 
@@ -69,7 +72,7 @@ function adicionaTarefa(tarefa, contador) {
     const elementoLI = document.createElement('li');
     const elementoP = document.createElement('p');
     const botaoRemover = document.createElement('span');
-    
+
     /* adiciona uma classe a LI */
     elementoLI.className = 'naoRealizada';
 
@@ -92,14 +95,17 @@ function adicionaTarefa(tarefa, contador) {
     /* Por fim adiciona a LI a UL */
     listaTarefas.appendChild(elementoLI);
 
+    exibeOcultaLista();
+
     /* cria a escuta do botão para remover as LIs deletadas */
     botaoRemover.addEventListener(`click`, function () {
         listaTarefas.removeChild(this.parentNode.parentNode);
+        exibeOcultaLista();
     });
 
     /* cria a escuta para marcar e desmarcar as tarefas concluídas */
     elementoP.addEventListener('click', function () {
-        console.log(this.parentNode);
+        /* console.log(this.parentNode); */
         if (this.parentNode.className === 'naoRealizada') {
             this.parentNode.className = 'realizada';
         } else {
@@ -107,3 +113,51 @@ function adicionaTarefa(tarefa, contador) {
         }
     });
 }
+
+/* verifica se existe algum elemento com a classe .tarefas */
+function exibeOcultaLista() {
+    const tarefas = document.querySelector('.tarefas');
+    if (tarefas === null) {
+        /* caso não exista, oculta a lista suspensa e zera o contador */
+        listaSuspensa.setAttribute('hidden', 'hidden');
+        count = 0;
+    } else {
+        /* caso exista deixa a lista suspensa de opções visível */
+        listaSuspensa.removeAttribute('hidden');
+    }
+}
+
+/* cria a escuta para manipular a lista suspensa de opções */
+/* listaSuspensa.addEventListener('change', function () {
+    if (listaSuspensa.selectedIndex === 1 ||
+        listaSuspensa.selectedIndex === 2) {
+        const vetorTarefas = listaTarefas.querySelectorAll('.tarefas');
+        console.log(vetorTarefas);
+        for (const iterator of vetorTarefas) {
+            iterator.dispatchEvent(new Event('click'));
+        }
+    }
+}); */
+
+/* cria a escuta para manipular a lista suspensa de opções */
+listaSuspensa.addEventListener('change', function () {
+    /* marcar todos os itens da lista */
+    if (listaSuspensa.selectedIndex === 1) {
+        const vetorTarefas = listaTarefas.querySelectorAll('.naoRealizada');
+        for (const iterator of vetorTarefas) {
+            /* console.log(iterator.firstChild); */
+            /* simula um click em cada elemento do array */
+            iterator.firstChild.dispatchEvent(new Event('click'));
+        }
+    }
+    /* desmarcar todos os itens da lista */
+    if (listaSuspensa.selectedIndex === 2) {
+        const vetorTarefas = listaTarefas.querySelectorAll('.realizada');
+        /* console.log(vetorTarefas); */
+        /* simula um click em cada elemento do array */
+        for (const iterator of vetorTarefas) {
+            console.log(iterator.firstChild);
+            iterator.firstChild.dispatchEvent(new Event('click'));
+        }
+    }
+});

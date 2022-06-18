@@ -12,6 +12,7 @@
             color: white;
             font: 12pt Tahoma;
             margin: 40px;
+
         }
 
         section {
@@ -66,6 +67,7 @@
             width: auto;
             max-width: 300px;
             color: black;
+            margin: 10px;
         }
 
         #listaTarefas li:not(:first-child) {
@@ -77,6 +79,12 @@
             justify-content: space-between;
             max-width: 320px;
             color: white;
+        }
+
+        #listaSuspensa{
+            margin: 10px 3px 0 0;
+            height: 25px;
+            border-radius: 5px;
         }
 
         ul li.naoRealizada {
@@ -94,9 +102,20 @@
             font-weight: 700;
             color: white;
         }
+        h3{
+            padding: 0;
+            margin: 10px 0 0 3px;
+        }
 
         span {
             color: white;
+        }
+
+        header{
+            display: flex;
+            justify-content:space-between;
+            align-items:flex-end;
+            padding: 10px 0 10px 0;
         }
     </style>
 </head>
@@ -117,7 +136,15 @@
     <button>Limpar</button>
 
     <section>
+       <header>
         <h3>Lista de Tarefas</h3>
+        <select name="" id="listaSuspensa" hidden>
+            <option value="">---- Selecione ----</option>
+            <option value="">Marcar Todas</option>
+            <option value="">Desmarcar Todas</option>
+            <option value="">Limpar Lista</option>
+        </select>
+       </header>
         <div>
             <input type="text" name="" id="caixaDeTexto" placeholder=" adicione uma tarefa">
             <span id="botaoAdicionar" class="adicionar">✚</span>

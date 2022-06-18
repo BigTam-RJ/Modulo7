@@ -82,7 +82,7 @@ function adicionaTarefa(tarefa, contador) {
     elementoP.textContent = `${tarefa} `;
 
     /* adiciona uma classe ao botão */
-    botaoRemover.className = 'mousepointer';
+    botaoRemover.className = 'mousepointer remover';
     botaoRemover.textContent = '✘';
     botaoRemover.style.fontWeight = '700';
 
@@ -156,8 +156,18 @@ listaSuspensa.addEventListener('change', function () {
         /* console.log(vetorTarefas); */
         /* simula um click em cada elemento do array */
         for (const iterator of vetorTarefas) {
-            console.log(iterator.firstChild);
+            /* console.log(iterator.firstChild); */
+            /* dispara o click no filho da listaTarefas.realizadas */
             iterator.firstChild.dispatchEvent(new Event('click'));
+        }
+    }
+
+    if (listaSuspensa.selectedIndex === 3) {
+        const vetorTarefas = listaTarefas.querySelectorAll('.remover');
+        /* console.log(vetorTarefas); */
+        for (const iterator of vetorTarefas) {
+            /* dispara o click na listaTarefas.remover */
+            iterator.dispatchEvent(new Event('click'));
         }
     }
 });

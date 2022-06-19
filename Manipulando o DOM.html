@@ -5,146 +5,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            background: rgb(10, 10, 94);
-            color: white;
-            font: 12pt Tahoma;
-            margin: 40px;
-
-        }
-
-        section {
-            margin-top: 40px;
-            padding: 0px 10px 0 10px;
-            border: 2px solid rgb(43, 43, 43);
-            width: 320px;
-            background: rgb(0, 0, 0);
-            border-radius: 15px;
-            box-shadow: 2px -2px 30px #7c7c7c;
-            font: 12pt Tahoma;
-        }
-
-        div {
-            width: auto;
-            display: flex;
-            margin-top: 10px;
-        }
-
-        div span {
-            margin-left: 5px;
-        }
-
-        ul {
-            padding-left: 15px;
-            max-width: 300px;
-            overflow-x: auto;
-        }
-
-        p {
-            max-width: 300px;
-        }
-
-        #caixaDeTexto {
-            width: 100%;
-            font-size: 15px;
-            padding-left: 8px;
-            border-radius: 7px;
-        }
-
-        .mousepointer {
-            cursor: pointer;
-            text-decoration: none !important;
-        }
-
-        .adicionar {
-            font-size: 25px;
-            cursor: pointer;
-        }
-
-        #listaTarefas {
-            width: auto;
-            max-width: 300px;
-            color: black;
-            margin: 10px;
-        }
-
-        #listaTarefas li:not(:first-child) {
-            border-top: 1px solid gray;
-        }
-
-        .tarefas {
-            display: flex;
-            justify-content: space-between;
-            max-width: 320px;
-            color: white;
-        }
-
-        #listaSuspensa{
-            margin: 10px 3px 0 0;
-            height: 25px;
-            border-radius: 5px;
-        }
-
-        ul li.naoRealizada {
-            list-style: '☐';
-            cursor: pointer;
-            text-indent: 10px;
-           /*  color: #4d4d4d; */
-           color: white;
-        }
-
-        ul li.realizada {
-            list-style: '☑';
-            cursor: pointer;
-            text-indent: 10px;
-            font-weight: 700;
-            color: white;
-        }
-        h3{
-            padding: 0;
-            margin: 10px 0 0 3px;
-        }
-
-        span {
-            color: white;
-        }
-
-        header{
-            display: flex;
-            justify-content:space-between;
-            align-items:flex-end;
-            padding: 10px 0 10px 0;
-        }
-    </style>
+    <title>Manipulando o DOM</title>
+    <link rel="stylesheet" href="./dom.css">
 </head>
 
 <body>
     <h2><i>Document Object Model</i> (DOM)</h2>
     <p>Definie:</p>
     <ul>
-        <li>Os <b>elementos</b> HTML como <b>objetos</b></li>
-        <p></p>
-        <li>Os <b>propriedades</b> dos elementos HTML</li>
-        <p></p>
-        <li>Os <b>métodos</b> para acessar os elementos HTML</li>
-        <p></p>
-        <li>Os <b>eventos</b> dos elementos HTML</li>
-        <p></p>
+        <li class="dom-li">Os <b>elementos</b> HTML como <b>objetos</b></li>
+        <li class="dom-li">Os <b>propriedades</b> dos elementos HTML</li>
+        <li class="dom-li">Os <b>métodos</b> para acessar os elementos HTML</li>
+        <li class="dom-li">Os <b>eventos</b> dos elementos HTML</li>
     </ul>
-    <button>Limpar</button>
+    <button id="btn-clear1">Excluir Itens ☝</button>
 
     <section>
-       <header>
-        <h3>Lista de Tarefas</h3>
-        <select name="" id="listaSuspensa" hidden>
-            <option value="">---- Selecione ----</option>
-            <option value="">Marcar Todas</option>
-            <option value="">Desmarcar Todas</option>
-            <option value="">Limpar Lista</option>
-        </select>
-       </header>
+        <header>
+            <h3>Lista de Tarefas</h3>
+            <select name="" id="listaSuspensa" hidden>
+                <option value="">---- Selecione ----</option>
+                <option value="">Marcar Todas</option>
+                <option value="">Desmarcar Todas</option>
+                <option value="">Limpar Lista</option>
+            </select>
+        </header>
         <div>
             <input type="text" name="" id="caixaDeTexto" placeholder=" adicione uma tarefa">
             <span id="botaoAdicionar" class="adicionar">✚</span>

@@ -5,9 +5,15 @@ const lista = document.querySelector('ul');
 const elementoLI = document.createElement('li');
 //console.log(elementoLI); retorna <li></li> 
 
+/* criar um novo elemento HTML */
+const elementoP = document.createElement('p');
+
 /* adicionar um texto ao elemento */
 elementoLI.textContent = 'Novo item da lista criado'
 //console.log(elementoLI); retorna <li>Novo item da lista criado</li>
+
+/* adicionar uma classe ao elemento LI */
+elementoLI.className = 'dom-li';
 
 /* incluir o novo elemento na UL existente */
 lista.appendChild(elementoLI);
@@ -17,7 +23,7 @@ const primeiroFilhoUL = lista.querySelector('li');
 /* console.log(primeiroFilhoUL); */
 
 /* selecionar e exiber TODOS os elementos da lista UL */
-const filhosUL = lista.querySelectorAll('li');
+let filhosUL = lista.querySelectorAll('li');
 for (const iterator of filhosUL) {
     /* console.log(iterator); */
 }
@@ -32,20 +38,51 @@ lista.removeAttribute('class');
 lista.className = 'mousepointer';
 
 /* console.log(lista.children[0].tagName); */
+
 /* alterar o estilo (css) via JS */
 lista.style.color = 'yellow';
 
 /* apagar TODOS os elementos da lista UL */
 const botaoLimpar = document.querySelector('button');
 botaoLimpar.addEventListener('click', function () {
-    if (lista.children[0].tagName === 'LI') {
-        for (const iterator of filhosUL) {
-            lista.removeChild(iterator);
-        }
+    
+    if (lista.childElementCount > 0) {
+        filhosUL = lista.querySelectorAll('li');
+        if (lista.children[0].tagName === 'LI') {
+            for (const iterator of filhosUL) {
+                lista.removeChild(iterator);
+               /*  console.log(iterator); */
+            }
+            botaoLimpar.textContent = 'Incluir Itens ☝';
+            botaoLimpar.id = 'btn-clear1';
+        } 
     } else {
-        console.log('lista vazia');
+        /* adicionar um texto ao elemento */
+        lista.innerHTML = `<li class="dom-li">Os <b>elementos</b> HTML como <b>objetos</b></li>
+        <li class="dom-li">Os <b>propriedades</b> dos elementos HTML</li>
+        <li class="dom-li">Os <b>métodos</b> para acessar os elementos HTML</li>
+        <li class="dom-li">Os <b>eventos</b> dos elementos HTML</li>
+        <li class="dom-li">Novo item da lista criado</li>`
+        //console.log(elementoLI); retorna <li>Novo item da lista criado</li>
+
+        botaoLimpar.textContent = 'Excluir Itens ☝';
+        botaoLimpar.id = 'btn-clear2';
     }
 });
+
+/* função para mudar backgroundColor pelo javascript com prompt*/
+/* function rgb(r,g,b) {
+    return 'rgb(' + [(r||0),(g||0),(b||0)].join(',') + ')';
+}
+  var a = parseInt(prompt("Enter R"), 10),
+      b = parseInt(prompt("Enter G"), 10),
+      c = parseInt(prompt("Enter B"), 10);
+  document.body.style.backgroundColor = rgb(a,b,c); */
+
+  /* alterar cor do background pelo style */
+/* botaoLimpar.style.background = 'rgb('+255+','+233+','+107+')'; */
+
+
 
 /* --------------- LISTA DE TAREFAS ---------------- */
 

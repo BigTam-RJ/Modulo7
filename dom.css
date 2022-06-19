@@ -1,0 +1,130 @@
+body {
+    background: rgb(10, 10, 94);
+    color: white;
+    font: 12pt Tahoma;
+    margin: 40px;
+
+}
+section {
+    margin-top: 40px;
+    padding: 0px 10px 0 10px;
+    border: 2px solid rgb(43, 43, 43);
+    width: auto;
+    height: auto;
+    background: rgb(0, 0, 0);
+    border-radius: 15px;
+    box-shadow: 2px -2px 30px #7c7c7c;
+    font: 12pt Tahoma;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div {
+    width: auto;
+    display: flex;
+    margin-top: 10px;
+}
+div span {
+    margin-left: 5px;
+}
+ul {
+    padding-left: 15px;
+    /* max-width: 300px; */
+    overflow-x: auto;
+}
+.dom-li{
+    padding: 0 0 15px;
+}
+#btn-clear1{
+    background-color: aqua;
+    height: 30px;
+    border-radius: 10px;
+}
+#btn-clear2{
+    background-color: rgb(255, 233, 107);
+    height: 30px;
+    border-radius: 10px;
+}
+#btn-clear1:hover{
+    background-color: rgb(255, 233, 107);
+    box-shadow: 2px -2px 15px aqua;
+    cursor: pointer;
+}
+#btn-clear2:hover{
+    background-color: aqua;
+    box-shadow: 2px -2px 15px rgb(255, 233, 107);
+    cursor: pointer;
+}
+
+#caixaDeTexto {
+    width: 100%;
+    font-size: 15px;
+    padding-left: 8px;
+    border-radius: 7px;
+}
+
+.mousepointer {
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.adicionar {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#listaTarefas {
+    width: auto;
+    /* max-width: 300px; */
+    color: black;
+    margin: 10px;
+}
+
+#listaTarefas li:not(:first-child) {
+    border-top: 1px solid gray;
+}
+
+.tarefas {
+    display: flex;
+    justify-content: space-between;
+    /* max-width: 320px; */
+    color: white;
+}
+
+#listaSuspensa {
+    margin: 10px 3px 0 0;
+    height: 25px;
+    border-radius: 5px;
+}
+
+ul li.naoRealizada {
+    list-style: '☐';
+    cursor: pointer;
+    text-indent: 10px;
+    /*  color: #4d4d4d; */
+    color: white;
+}
+
+ul li.realizada {
+    list-style: '☑';
+    cursor: pointer;
+    text-indent: 10px;
+    font-weight: 700;
+    color: white;
+}
+
+h3 {
+    padding: 0;
+    margin: 10px 0 0 3px;
+}
+
+span {
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 0 10px 0;
+}
